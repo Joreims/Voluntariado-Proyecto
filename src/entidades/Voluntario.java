@@ -8,6 +8,24 @@ package entidades;
  *
  * @author jegar
  */
-public class Voluntario {
+public class Voluntario extends Persona{
+    private int id;
+
+    public Voluntario() {
+    }
     
+    public Voluntario(int id){
+        this.id = id;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }
