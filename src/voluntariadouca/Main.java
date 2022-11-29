@@ -4,7 +4,7 @@
  */
 package voluntariadouca;
 
-import presentacion.FrmInicioSesion;
+import presentacion.FrmLogin;
 
 
 /**
@@ -18,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        FrmInicioSesion frm = new FrmInicioSesion();
+        FrmLogin frm = new FrmLogin();
         frm.setVisible(true);
     }
     
