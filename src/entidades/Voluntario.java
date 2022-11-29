@@ -18,10 +18,7 @@ public class Voluntario extends Persona{
         super(nombres, apellidos, cedula, fechaNac, celular, email);
         this.id = id;
     }
-    
-    public void finalize()throws Throwable {
-        super.finalize();
-    }
+   
     
     public int getId() {
         return id;

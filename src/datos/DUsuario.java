@@ -41,7 +41,13 @@ public class DUsuario {
             while(rs.next()){
                 lista.add(new Usuario(
                         rs.getInt("Id"),
-                        rs.getString("Password")
+                        rs.getString("Password"),
+                        rs.getString("Nombres"),
+                        rs.getString("Apellidos"),
+                        rs.getString("Cedula"),
+                        rs.getString("FechaNac"),
+                        rs.getString("Celular"),
+                        rs.getString("Email")
                         
                 ));
             }
@@ -73,6 +79,12 @@ public class DUsuario {
             rs.moveToInsertRow();
             rs.updateInt("Id", a.getId());
             rs.updateString("Password", a.getPassword());
+            rs.updateString("Nombres", a.getNombres());
+            rs.updateString("Apellidos", a.getApellidos());
+            rs.updateString("Cedula", a.getCedula());
+            rs.updateString("FechaNac", a.getFechaNac());
+            rs.updateString("Celular", a.getCelular());
+            rs.updateString("Email", a.getEmail());
             rs.insertRow();
             rs.moveToCurrentRow();
             guardado = true;
