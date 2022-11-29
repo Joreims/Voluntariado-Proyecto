@@ -9,31 +9,32 @@ package entidades;
  * @author manza
  */
 public class Actividades {
+    private int actividadID;
     private String fecha;
     private String hora;
     private String descripcion;
 
+    public Actividades() {
+    }
 
-    public Actividades(){
-
-	}
-
-
-    public void setfecha(String newVal){
-		fecha = newVal;
-	}
-
-    public String gethora(){
-		return hora;
-	}
-
-    public Actividades(String fecha, String hora, String descripcion) {
+    public Actividades(int actividadID, String fecha, String hora, String descripcion) {
+        this.actividadID = actividadID;
         this.fecha = fecha;
         this.hora = hora;
         this.descripcion = descripcion;
     }
 
-    
+    public Actividades(int i, String text, String text0, String text1, String text2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public int getActividadID() {
+        return actividadID;
+    }
+
+    public void setActividadID(int actividadID) {
+        this.actividadID = actividadID;
+    }
 
     public String getFecha() {
         return fecha;
@@ -58,11 +59,5 @@ public class Actividades {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public Object getActividadID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-        
-        
+    
 }

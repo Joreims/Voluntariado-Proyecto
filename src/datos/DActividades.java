@@ -40,10 +40,11 @@ public class DActividades {
             this.obtRegistros();
             while(rs.next()){
                 lista.add(new Actividades(
+                        rs.getInt("ActividadID"),
                         rs.getString("Fecha"),
                         rs.getString("Hora"),
                         rs.getString("Descripcion")
-                ) {});
+                ));
             }
         }catch (SQLException ex){
             System.out.println("Error al listar actividad " + ex.getMessage());
@@ -71,6 +72,7 @@ public class DActividades {
         this.obtRegistros();
         try{
             rs.moveToInsertRow();
+            rs.updateInt("ActividadID", a.getActividadID());
             rs.updateString("Fecha", a.getFecha());
             rs.updateString("Hora", a.getHora());
             rs.updateString("Descripcion", a.getDescripcion());
@@ -97,7 +99,7 @@ public class DActividades {
         }
         return guardado;
 }
-    public boolean existeActividades(String id){
+    public boolean existeActividades(int id){
         boolean resp = false;
         this.obtRegistros();
         try{
@@ -137,7 +139,7 @@ public class DActividades {
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getString("ActividadID").equals(a.getActividadID())){
+                if(rs.getInt("ActividadID") == a.getActividadID()){
                     rs.updateString("Fecha", a.getFecha());
                     rs.updateString("Hora", a.getHora());
                     rs.updateString("Descripcion", a.getDescripcion());
@@ -170,7 +172,7 @@ public class DActividades {
         return resp;
     }
     
-    public boolean eliminarActividades(String id){
+    public boolean eliminarActividades(int id){
         boolean resp = false;
         this.obtRegistros();
         try{

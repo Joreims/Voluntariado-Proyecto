@@ -47,6 +47,7 @@ public class DUsuario {
                         rs.getString("Apellidos"),
                         rs.getString("Cedula"),
                         rs.getString("FechaNac"),
+                        rs.getString("Celular"),
                         rs.getString("Email")
                         
                 ));
@@ -83,6 +84,7 @@ public class DUsuario {
             rs.updateString("Apellidos", a.getApellidos());
             rs.updateString("Cedula", a.getCedula());
             rs.updateString("FechaNac", a.getFechaNac());
+            rs.updateString("Celular", a.getCelular());
             rs.updateString("Email", a.getEmail());
             rs.insertRow();
             rs.moveToCurrentRow();

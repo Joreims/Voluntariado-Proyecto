@@ -20,12 +20,13 @@ public class Usuario extends Persona{
         this.password = password;
     }
 
-    public Usuario(int id, String password, String nombres, String apellidos, String cedula, String fechaNac, String email) {
-        super(nombres, apellidos, cedula, fechaNac, email);
+    public Usuario(int id, String password, String nombres, String apellidos, String cedula, String fechaNac, String celular, String email) {
+        super(nombres, apellidos, cedula, fechaNac, celular, email);
         this.id = id;
         this.password = password;
     }
 
+    
     public int getId() {
         return id;
     }
@@ -41,5 +42,7 @@ public class Usuario extends Persona{
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    
 
 }

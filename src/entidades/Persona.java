@@ -8,24 +8,26 @@ package entidades;
  *
  * @author jegar
  */
-public abstract class Persona {
+public class Persona {
     private String nombres;
     private String apellidos;
     private String cedula;
     private String fechaNac;
+    private String celular;
     private String email;
 
     public Persona() {
     }
 
-    public Persona(String nombres, String apellidos, String cedula, String fechaNac, String email) {
+    public Persona(String nombres, String apellidos, String cedula, String fechaNac, String celular, String email) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.cedula = cedula;
         this.fechaNac = fechaNac;
+        this.celular = celular;
         this.email = email;
     }
-
+    
     public String getNombres() {
         return nombres;
     }
@@ -58,6 +60,14 @@ public abstract class Persona {
         this.fechaNac = fechaNac;
     }
 
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -65,7 +75,7 @@ public abstract class Persona {
     public void setEmail(String email) {
         this.email = email;
     }
-
+  
     
     
 }
