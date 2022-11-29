@@ -78,10 +78,6 @@ public class FrmActividades extends javax.swing.JFrame {
         TfFecha.setText(lista.get(fila).getFecha());
         TfHora.setText(lista.get(fila).getHora());
         TaDesc.setText(lista.get(fila).getDescripcion());
-        TbPanel.setSelectedIndex(0);
-        BtnGuardar.setEnabled(true);
-        BtnEditar.setEnabled(true);
-        BtnEliminar.setEnabled(true);
     }
 
     private void verificarDatosVacios() {
@@ -286,17 +282,9 @@ public class FrmActividades extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ActividadID", "Fecha", "Hora", "Desc"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         TblRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TblRegistrosMouseClicked(evt);

@@ -42,8 +42,7 @@ public class DActividades {
         try {
             this.obtRegistros();
             while (rs.next()) {
-                lista.add(new Actividades(
-                        rs.getInt("actividadID"),
+                lista.add(new Actividades(0,
                         rs.getString("fecha"),
                         rs.getString("hora"),
                         rs.getString("descripcion")
