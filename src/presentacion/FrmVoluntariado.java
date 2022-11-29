@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package presentacion;
+
 import datos.DVoluntariado;
 import entidades.Voluntariado;
 import java.awt.HeadlessException;
@@ -19,79 +20,79 @@ import javax.swing.table.TableRowSorter;
  * @author abiga
  */
 public class FrmVoluntariado extends javax.swing.JFrame {
-    
-    private String Nombres;
+
+    private String nombres;
     private DVoluntariado dVoluntariado = new DVoluntariado();
-    private ArrayList<Voluntariado> lista= new ArrayList<>();
+    private ArrayList<Voluntariado> lista = new ArrayList<>();
     //Declaramos un filtro de datos para la tabla
     TableRowSorter trsFiltro;
-    
-    private void limpiar(){
+
+    private void limpiar() {
         TfNombre.setText("");
         TfTipo.setText("");
         BtnGuardar.setEnabled(true);
         BtnEditar.setEnabled(false);
-        BtnEliminar.setEnabled(false);    
+        BtnEliminar.setEnabled(false);
     }
-    
-    private void llenarArrayList(){
-        if (!lista.isEmpty()){
+
+    private void llenarArrayList() {
+        if (!lista.isEmpty()) {
             lista.clear();
         }
         lista = dVoluntariado.listarVoluntariado();
     }
-    
-    private void llenarTabla(){
+
+    private void llenarTabla() {
         llenarArrayList();
-        DefaultTableModel dtm = new DefaultTableModel(){   
+        DefaultTableModel dtm = new DefaultTableModel() {
             @Override
-            public boolean isCellEditable (int row, int column){
+            public boolean isCellEditable(int row, int column) {
                 return false;
             }
-         };
-    String titulos []= {"Nombre", "Tipo"};
-    dtm.setColumnIdentifiers(titulos);
-    for (Voluntariado a : lista){
-        Object[]fila= new Object[]{
-        a.getNombre(),
-        a.getTipo()
         };
-        dtm.addRow(fila);
+        String titulos[] = {"Nombre", "Tipo"};
+        dtm.setColumnIdentifiers(titulos);
+        for (Voluntariado a : lista) {
+            Object[] fila = new Object[]{
+                a.getNombre(),
+                a.getTipo()
+            };
+            dtm.addRow(fila);
+        }
+        this.TblRegistros.setModel(dtm);
+
     }
-    this.TblRegistros.setModel(dtm);
- 
-}
-    
-private void filtrarTabla(){
-    trsFiltro.setRowFilter(RowFilter.regexFilter(TfDato.getText(), 0));
-}   
 
-private void ubicarDatos(){
-    int fila= TblRegistros.getSelectedRow();
-    TfNombre.setText(lista.get(fila).getNombre());
-    TfTipo.setText(lista.get(fila).getTipo());
-    TbPanel.setSelectedIndex(0);
-    BtnGuardar.setEnabled(true);
-    BtnEditar.setEnabled(true);
-    BtnEliminar.setEnabled(true);
-    TfNombre.requestFocus();
-}
+    private void filtrarTabla() {
+        trsFiltro.setRowFilter(RowFilter.regexFilter(TfDato.getText(), 0));
+    }
 
-private void verificarDatosVacios(){
-    if (TfNombre.getText().equals("") || TfNombre.getText().length()==0){
-        JOptionPane.showMessageDialog(this, "Por favor verifique que el nombre"
-                +" no este vacio.", "Voluntariado",
-                        JOptionPane.WARNING_MESSAGE);
+    private void ubicarDatos() {
+        int fila = TblRegistros.getSelectedRow();
+        TfNombre.setText(lista.get(fila).getNombre());
+        TfTipo.setText(lista.get(fila).getTipo());
+        TbPanel.setSelectedIndex(0);
+        BtnGuardar.setEnabled(true);
+        BtnEditar.setEnabled(true);
+        BtnEliminar.setEnabled(true);
         TfNombre.requestFocus();
     }
-    if (TfTipo.getText().equals("")||TfTipo.getText().length()== 0){
-        JOptionPane.showMessageDialog(this, "Por Favor verifique el tipo"
-                + "no este vacio.", "Voluntariado",
-                        JOptionPane.WARNING_MESSAGE);
-        TfTipo.requestFocus();
+
+    private void verificarDatosVacios() {
+        if (TfNombre.getText().equals("") || TfNombre.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Por favor verifique que el nombre"
+                    + " no este vacio.", "Voluntariado",
+                    JOptionPane.WARNING_MESSAGE);
+            TfNombre.requestFocus();
+        }
+        if (TfTipo.getText().equals("") || TfTipo.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Por Favor verifique el tipo"
+                    + "no este vacio.", "Voluntariado",
+                    JOptionPane.WARNING_MESSAGE);
+            TfTipo.requestFocus();
+        }
     }
-}
-    
+
     public FrmVoluntariado() {
         initComponents();
         this.llenarTabla();
@@ -360,33 +361,33 @@ private void verificarDatosVacios(){
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
         // TODO add your handling code here:
         this.verificarDatosVacios();
-        try{
+        try {
             Voluntariado a = new Voluntariado(0,
-                            TfNombre.getText(),
-                            TfTipo.getText()
+                    TfNombre.getText(),
+                    TfTipo.getText()
             );
-            if (dVoluntariado.guardarVoluntariado(a)){
+            if (dVoluntariado.guardarVoluntariado(a)) {
                 JOptionPane.showMessageDialog(this, "Registro Guardado.",
-                                "Voluntariado", JOptionPane.INFORMATION_MESSAGE);
+                        "Voluntariado", JOptionPane.INFORMATION_MESSAGE);
                 llenarTabla();
                 TbPanel.setSelectedIndex(1);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Error al guardar",
-                        "Voluntariado", JOptionPane.WARNING_MESSAGE);      
+                        "Voluntariado", JOptionPane.WARNING_MESSAGE);
             }
-        }catch(HeadlessException ex){
-            System.out.println("Error al intentar guardar: " + ex.getMessage());       
+        } catch (HeadlessException ex) {
+            System.out.println("Error al intentar guardar: " + ex.getMessage());
         }
     }//GEN-LAST:event_BtnGuardarActionPerformed
-         
-            
+
+
     private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
         // TODO add your handling code here:
         this.verificarDatosVacios();
         Voluntariado a = new Voluntariado(
-                        TfNombre.getText(),
-                        TfTipo.getText()
-                   );
+                TfNombre.getText(),
+                TfTipo.getText()
+        );
     }//GEN-LAST:event_BtnEditarActionPerformed
 
     private void TfDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfDatoActionPerformed
@@ -395,38 +396,38 @@ private void verificarDatosVacios(){
 
     private void TblRegistrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblRegistrosMouseClicked
         // TODO add your handling code here:
-       TblRegistros.addMouseListener(new java.awt.event.MouseAdapter(){
-           public void mouseCLicked(java.awt.event.MouseEvent e){
-               if (e.getClickCount()==2){
-                   ubicarDatos();
-               }
-           }
-       });
-            
-    
+        TblRegistros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseCLicked(java.awt.event.MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    ubicarDatos();
+                }
+            }
+        });
+
+
     }//GEN-LAST:event_TblRegistrosMouseClicked
 
     private void TfDatoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TfDatoKeyTyped
         // TODO add your handling code here:
-        TfDato.addKeyListener(new KeyAdapter(){
-        @Override
-        public void keyReleased(final KeyEvent e){
-            filtrarTabla();
-        }
-    });
-    trsFiltro = new TableRowSorter(TblRegistros.getModel());
-    TblRegistros.setRowSorter(trsFiltro);
+        TfDato.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(final KeyEvent e) {
+                filtrarTabla();
+            }
+        });
+        trsFiltro = new TableRowSorter(TblRegistros.getModel());
+        TblRegistros.setRowSorter(trsFiltro);
     }//GEN-LAST:event_TfDatoKeyTyped
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         // TODO add your handling code here:
         this.verificarDatosVacios();
-        int resp= JOptionPane.showConfirmDialog(this,"¿Desea eliminar este registro?",
-                    "Voluntariado", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (resp == 0){
-            if (dVoluntariado.eliminarVoluntariado(Nombre)){
+        int resp = JOptionPane.showConfirmDialog(this, "¿Desea eliminar este registro?",
+                "Voluntariado", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0) {
+            if (dVoluntariado.eliminarVoluntariado(nombres)) {
                 JOptionPane.showMessageDialog(this, "Registro eliminado satisfactoriamente",
-                                "Voluntariado", JOptionPane.INFORMATION_MESSAGE);
+                        "Voluntariado", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         llenarTabla();
@@ -444,9 +445,9 @@ private void verificarDatosVacios(){
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       FrmVoluntariado frm = new FrmVoluntariado();
-       frm.setVisible(true);
-               /* Create and display the form */
+        FrmVoluntariado frm = new FrmVoluntariado();
+        frm.setVisible(true);
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new FrmVoluntariado().setVisible(true);
         });

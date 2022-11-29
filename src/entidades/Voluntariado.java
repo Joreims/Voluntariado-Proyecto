@@ -20,6 +20,10 @@ public class Voluntariado {
         this.tipo = tipo;
     }
 
+    public Voluntariado(int i, String text, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getNombre() {
         return nombre;
     }

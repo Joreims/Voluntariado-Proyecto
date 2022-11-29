@@ -14,18 +14,23 @@ public class Voluntario extends Persona{
     public Voluntario() {
     }
     
-    public Voluntario(int id){
+    public Voluntario(int id, String nombres, String apellidos, String cedula, String fechaNac, String celular, String email){
+        super(nombres, apellidos, cedula, fechaNac, celular, email);
         this.id = id;
     }
-
-    @Override
+    
+    public void finalize()throws Throwable {
+        super.finalize();
+    }
+    
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
-
+    
+    
+    
 }

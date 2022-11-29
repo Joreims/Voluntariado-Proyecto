@@ -37,11 +37,10 @@ public class DPersona {
                 lista.add(new Persona(
                         rs.getString("Nombres"),
                         rs.getString("Apellidos"),
-                        rs.getInt("Cedula"),
+                        rs.getString("Cedula"),
                         rs.getString("FechaNac"),
-                        rs.getInt("Celular"),
-                        rs.getString("Email"),
-                        rs.getInt("Id")
+                        rs.getString("Celular"),
+                        rs.getString("Email")
                 ));
             }
         }catch (SQLException ex){
@@ -72,11 +71,10 @@ public class DPersona {
             rs.moveToInsertRow();
             rs.updateString("Nombres", a.getNombres());
             rs.updateString("Apellidos", a.getApellidos());
-            rs.updateInt("cedula", a.getCedula());
+            rs.updateString("cedula", a.getCedula());
             rs.updateString("FechaNac", a.getFechaNac());
-            rs.updateInt("Celular", a.getCelular());
+            rs.updateString("Celular", a.getCelular());
             rs.updateString("Email", a.getEmail());
-            rs.updateInt("Id",a.getId());
             rs.insertRow();
             rs.moveToCurrentRow();
             guardado = true;
@@ -100,13 +98,13 @@ public class DPersona {
         }
         return guardado;
 }
-    public boolean existePersona(int id){
+    public boolean existePersona(String nombres){
         boolean resp = false;
         this.obtRegistros();
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("Id") == id){
+                    if (rs.getString("Nombres").equals(nombres)){
                     resp = true;
                     break;
                 }
@@ -140,12 +138,12 @@ public class DPersona {
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("Id") == a.getId()){
+                if(rs.getString("Nombres").equals(a.getNombres())){
                     rs.updateString("Nombres", a.getNombres());
                     rs.updateString("Apellidos", a.getApellidos());
-                    rs.updateInt("cedula", a.getCedula());
+                    rs.updateString("cedula", a.getCedula());
                     rs.updateString("FechaNac", a.getFechaNac());
-                    rs.updateInt("Celular", a.getCelular());
+                    rs.updateString("Celular", a.getCelular());
                     rs.updateString("Email", a.getEmail());
                     rs.updateRow();
                     resp = true;
@@ -176,13 +174,13 @@ public class DPersona {
         return resp;
     }
     
-    public boolean eliminarPersona(int id){
+    public boolean eliminarPersona(String nombres){
         boolean resp = false;
         this.obtRegistros();
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("Id") == id){
+                if(rs.getString("Nombres").equals(nombres)){
                     rs.deleteRow();
                     resp = true;
                     break;

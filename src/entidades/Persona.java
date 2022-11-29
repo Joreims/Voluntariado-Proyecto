@@ -11,23 +11,21 @@ package entidades;
 public class Persona {
     private String nombres;
     private String apellidos;
-    private int cedula;
+    private String cedula;
     private String fechaNac;
-    private int celular;
+    private String celular;
     private String email;
-    private int id;
 
     public Persona() {
     }
 
-    public Persona(String nombres, String apellidos, int cedula, String fechaNac, int celular, String email, int id) {
+    public Persona(String nombres, String apellidos, String cedula, String fechaNac, String celular, String email) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.cedula = cedula;
         this.fechaNac = fechaNac;
         this.celular = celular;
         this.email = email;
-        this.id = id;
     }
     
     public String getNombres() {
@@ -46,11 +44,11 @@ public class Persona {
         this.apellidos = apellidos;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
@@ -62,11 +60,11 @@ public class Persona {
         this.fechaNac = fechaNac;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -77,15 +75,6 @@ public class Persona {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
   
     
     

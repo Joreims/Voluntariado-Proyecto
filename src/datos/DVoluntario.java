@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package datos;
+
 import entidades.Persona;
 import entidades.Voluntario;
 import java.sql.Connection;
@@ -40,7 +41,13 @@ public class DVoluntario {
             this.obtRegistros();
             while (rs.next()){
                 lista.add(new Voluntario(
-                        rs.getInt("Id")
+                        rs.getInt("Id"),
+                        rs.getString("Nombres"),
+                        rs.getString("Apellidos"),
+                        rs.getString("Cedula"),
+                        rs.getString("FechaNac"),
+                        rs.getString("Celular"),
+                        rs.getString("Email")
                 ));
             }
         } catch (SQLException ex){
@@ -72,6 +79,12 @@ public class DVoluntario {
         try{
             rs.moveToInsertRow();
             rs.updateInt("Id", a.getId());
+            rs.updateString("Nombres", a.getNombres());
+            rs.updateString("Apellidos", a.getApellidos());
+            rs.updateString("Cedula", a.getCedula());
+            rs.updateString("FechaNac", a.getFechaNac());
+            rs.updateString("Celular", a.getCelular());
+            rs.updateString("Email", a.getEmail());
             rs.insertRow();
             guardado = true;
         } catch (SQLException ex){
@@ -110,6 +123,45 @@ public class DVoluntario {
             System.out.println("Error al buscar voluntario: " + ex.getMessage());
         }
         finally {
+            try{
+                if (rs != null){
+                    rs.close();
+                }
+                
+                if (ps != null){
+                    ps.close();
+                }
+                
+                if (conn != null){
+                    Conexion.closeConexion(conn);
+                }
+            } catch (SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        } return resp;
+    }
+    
+    public boolean editarVoluntario(Voluntario a){
+        boolean resp = false;
+        this.obtRegistros();
+        try{
+            rs.beforeFirst();
+            while (rs.next()){
+                if (rs.getInt("Id") == a.getId()){
+                    rs.updateString("Nombres", a.getNombres());
+                    rs.updateString("Apellidos", a.getApellidos());
+                    rs.updateString("Cedula", a.getCedula());
+                    rs.updateString("FechaNac", a.getFechaNac());
+                    rs.updateString("Celular", a.getCelular());
+                    rs.updateString("Email", a.getEmail());
+                    rs.updateRow();
+                    resp = true;
+                    break;
+                }
+            }
+        } catch (SQLException ex){
+            System.out.println("Error al editar: " + ex.getMessage());
+        } finally {
             try{
                 if (rs != null){
                     rs.close();
