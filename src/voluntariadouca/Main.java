@@ -4,9 +4,11 @@
  */
 package voluntariadouca;
 
+import presentacion.FrmVoluntariado;
+
 /**
  *
- * @author manza
+ * @author abiga
  */
 public class Main {
 
@@ -15,6 +17,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        FrmVoluntariado frm = new FrmVoluntariado();
+        frm.setVisible(true);
     }
     
 }

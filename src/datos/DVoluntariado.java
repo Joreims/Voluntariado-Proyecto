@@ -22,17 +22,16 @@ public void obtRegistros(){
         conn= Conexion.getConnection();
         String tSQL= "Select * from Voluntariado";
         ps=conn.prepareStatement(tSQL, 
-                    ResultSet.TYPE_SCROLL_SENSITIVE,
+                   ResultSet.TYPE_SCROLL_SENSITIVE,
                    ResultSet.CONCUR_UPDATABLE,
                    ResultSet.HOLD_CURSORS_OVER_COMMIT);
-                   rs= ps.executeQuery();
+        rs= ps.executeQuery();
         }catch (SQLException ex){
             System.out.println("Error al obtener registros:"+ ex.getMessage());
     }
 }
     public ArrayList<Voluntariado>listarVoluntariado(){
-        
-             ArrayList<Voluntariado> lista = new ArrayList<>();
+        ArrayList<Voluntariado> lista = new ArrayList<>();
         try{
             this.obtRegistros();
             while(rs.next()){
@@ -45,6 +44,7 @@ public void obtRegistros(){
         }catch (SQLException ex){
             System.out.println("Error al listar voluntariado " + ex.getMessage());
         }finally{
+            
             try{
                 if (rs !=null){
                       rs.close();
@@ -57,7 +57,7 @@ public void obtRegistros(){
                 }
              
             }catch (SQLException ex){
-            System.out.println(ex.getMessage());
+                System.out.println(ex.getMessage());
             }
         }
         return lista;
@@ -74,7 +74,9 @@ public void obtRegistros(){
             guardado = true;
         }catch(SQLException ex){
             System.out.println("Error al guardar el voluntariado:" + ex.getMessage());
-        }finally{
+        }
+            finally{
+            
             try{
                 if (rs !=null){
                       rs.close();
@@ -91,14 +93,14 @@ public void obtRegistros(){
             }
         }
         return guardado;
-}
+    }
     public boolean existeVoluntariado(String nombre){
         boolean resp = false;
         this.obtRegistros();
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getString("Nombre") == null ? nombre == null : rs.getString("Nombre").equals(nombre)){
+                if (rs.getString("Nombre").equals(nombre)){
                     resp = true;
                     break;
                 }
@@ -170,7 +172,8 @@ public void obtRegistros(){
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getString("Nombre").equals(nombre)){
+                if(!(rs.getString("VoluntariadoNombre") == null ? nombre == null : rs.getString("VoluntariadoNombre").equals(nombre))){
+                } else {
                     rs.deleteRow();
                     resp = true;
                     break;
@@ -199,4 +202,7 @@ public void obtRegistros(){
         return resp;
     }
 }
+
+        
+
 

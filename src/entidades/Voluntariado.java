@@ -35,6 +35,11 @@ public class Voluntariado {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return "Voluntariado{" + "nombre=" + nombre + ", tipo=" + tipo + '}';
+    }
     
     
 }
