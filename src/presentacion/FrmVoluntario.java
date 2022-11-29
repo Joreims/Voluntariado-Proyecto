@@ -161,6 +161,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
         TfDato = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TblRegistro = new javax.swing.JTable();
+        BtnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -371,6 +372,13 @@ public class FrmVoluntario extends javax.swing.JFrame {
 
         TbPanel.addTab("Registros", jPanel3);
 
+        BtnRegresar.setText("REGRESAR AL MENU");
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -379,13 +387,19 @@ public class FrmVoluntario extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(TbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnRegresar)
+                .addGap(183, 183, 183))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(TbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnRegresar)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -478,6 +492,12 @@ public class FrmVoluntario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        FrmUsuario regresar = new FrmUsuario();
+        regresar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -519,6 +539,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnGuardar;
     private javax.swing.JButton BtnNuevo;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JToolBar TbComandos;
     private javax.swing.JTabbedPane TbPanel;
     private javax.swing.JTable TblRegistro;

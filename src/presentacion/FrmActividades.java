@@ -155,6 +155,7 @@ public class FrmActividades extends javax.swing.JFrame {
         TfDato1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         TblRegistros1 = new javax.swing.JTable();
+        BtnRegresar = new javax.swing.JButton();
         Datos1 = new javax.swing.JPanel();
         TbComandos1 = new javax.swing.JToolBar();
         BtnNuevo1 = new javax.swing.JButton();
@@ -238,7 +239,7 @@ public class FrmActividades extends javax.swing.JFrame {
                         .addComponent(TfDato, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TbPanel.addTab("Registros", Registros);
@@ -394,7 +395,7 @@ public class FrmActividades extends javax.swing.JFrame {
                 .addComponent(TbComandos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TbPanel.addTab("Datos", Datos);
@@ -435,6 +436,13 @@ public class FrmActividades extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(TblRegistros1);
 
+        BtnRegresar.setText("Regresar al menu");
+        BtnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Registros1Layout = new javax.swing.GroupLayout(Registros1);
         Registros1.setLayout(Registros1Layout);
         Registros1Layout.setHorizontalGroup(
@@ -448,7 +456,9 @@ public class FrmActividades extends javax.swing.JFrame {
                         .addComponent(TfDato1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Registros1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(Registros1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtnRegresar)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(314, Short.MAX_VALUE))
         );
         Registros1Layout.setVerticalGroup(
@@ -460,7 +470,9 @@ public class FrmActividades extends javax.swing.JFrame {
                     .addComponent(TfDato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(BtnRegresar)
+                .addGap(24, 24, 24))
         );
 
         TbPanel1.addTab("Registros", Registros1);
@@ -621,10 +633,9 @@ public class FrmActividades extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(TbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(TbPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TbPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TbPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -773,6 +784,12 @@ public class FrmActividades extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TfTipo1ActionPerformed
 
+    private void BtnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegresarActionPerformed
+        FrmUsuario regresar = new FrmUsuario();
+        regresar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BtnRegresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -794,6 +811,7 @@ public class FrmActividades extends javax.swing.JFrame {
     private javax.swing.JButton BtnGuardar1;
     private javax.swing.JButton BtnNuevo;
     private javax.swing.JButton BtnNuevo1;
+    private javax.swing.JButton BtnRegresar;
     private javax.swing.JLabel Buscar;
     private javax.swing.JLabel Buscar1;
     private javax.swing.JPanel Datos;

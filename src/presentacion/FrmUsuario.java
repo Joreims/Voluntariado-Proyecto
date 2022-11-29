@@ -93,6 +93,11 @@ public class FrmUsuario extends javax.swing.JFrame {
         BtnActividad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BtnActividad.setText("AÑADIR - MONITOREAR ACTIVIDADES");
         BtnActividad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnActividadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,8 +145,17 @@ public class FrmUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnVoluntarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVoluntarioActionPerformed
-        // TODO add your handling code here:
+        FrmVoluntario abrir = new FrmVoluntario();
+        abrir.setVisible(true);
+        dispose();
+        
     }//GEN-LAST:event_BtnVoluntarioActionPerformed
+
+    private void BtnActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActividadActionPerformed
+        FrmActividades abrir = new FrmActividades();
+        abrir.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BtnActividadActionPerformed
 
     /**
      * @param args the command line arguments
