@@ -54,6 +54,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
     private void llenarTabla(){
         llenarArrayList();
         DefaultTableModel dtm = new DefaultTableModel(){
+            @Override
             public boolean isCellEditable(int row, int column){
                 return false;
             }
@@ -205,6 +206,11 @@ public class FrmVoluntario extends javax.swing.JFrame {
         BtnEditar.setFocusable(false);
         BtnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditarActionPerformed(evt);
+            }
+        });
         TbComandos.add(BtnEditar);
 
         BtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/iconos/eliminar.png"))); // NOI18N
@@ -444,7 +450,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
                     TfCelular.getText(),
                     TfEmail.getText()
             );
-            if (dVoluntario.editarVoluntario(a)){
+            if (dVoluntario.guardarVoluntario(a)){
                 JOptionPane.showMessageDialog(this, "Resgistro Editado.",
                         "Voluntario", JOptionPane.WARNING_MESSAGE);
                 llenarTabla();
@@ -497,6 +503,33 @@ public class FrmVoluntario extends javax.swing.JFrame {
         regresar.setVisible(true);
         dispose();
     }//GEN-LAST:event_BtnRegresarActionPerformed
+
+    private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
+        // TODO add your handling code here:
+        this.verificarDatosVacios();
+        try{
+            Voluntario a = new Voluntario(0,
+                    TfNombres.getText(),
+                    TfApellidos.getText(),
+                    TfCedula.getText(),
+                    TfFechaNac.getText(),
+                    TfCelular.getText(),
+                    TfEmail.getText()
+            );
+            if (dVoluntario.editarVoluntario(a)){
+                JOptionPane.showMessageDialog(this, "Resgistro Editado.",
+                        "Voluntario", JOptionPane.WARNING_MESSAGE);
+                llenarTabla();
+                TbPanel.setSelectedIndex(1);
+            } else{
+                JOptionPane.showMessageDialog(this, "Error al editar",
+                        "Voluntario", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (HeadlessException ex){
+            System.out.println("Error al intentar guardar: " + ex.getMessage()
+            );
+        }
+    }//GEN-LAST:event_BtnEditarActionPerformed
 
     /**
      * @param args the command line arguments

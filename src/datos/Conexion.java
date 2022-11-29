@@ -17,7 +17,7 @@ public class Conexion {
     //atributos
     private static Connection con = null;
     private static final String URL = "jdbc:sqlserver://localhost;databaseName="
-            + "BDFinal;Persist Security Info=True;";
+            + "BDVoluntariado;Persist Security Info=True;";
     private static final String USER = "sa";
     private static final String PASSWORD = "1234";
     
@@ -64,7 +64,7 @@ public class Conexion {
         try {
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
            con= DriverManager.getConnection(URL, USER, PASSWORD);
-           System.out.println("Se conectó a la BD");
+           System.out.println("Se conectó a la BD hr");
         } 
         catch (ClassNotFoundException e) {
            con=null;

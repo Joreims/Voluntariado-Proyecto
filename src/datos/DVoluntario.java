@@ -4,6 +4,7 @@
  */
 package datos;
 
+import entidades.Persona;
 import entidades.Voluntario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,7 +42,7 @@ public class DVoluntario {
             this.obtRegistros();
             while (rs.next()){
                 lista.add(new Voluntario(
-                        rs.getInt("Id"),
+                        rs.getInt("VoluntarioID"),
                         rs.getString("Nombres"),
                         rs.getString("Apellidos"),
                         rs.getString("Cedula"),
@@ -73,12 +74,11 @@ public class DVoluntario {
         return lista;
     }
     
-    public boolean guardarVoluntario(Voluntario a){
+    public boolean guardarVoluntario(Persona a){
         boolean guardado = false;
         this.obtRegistros();
         try{
             rs.moveToInsertRow();
-            rs.updateInt("Id", a.getId());
             rs.updateString("Nombres", a.getNombres());
             rs.updateString("Apellidos", a.getApellidos());
             rs.updateString("Cedula", a.getCedula());
@@ -114,7 +114,7 @@ public class DVoluntario {
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("Id") == id){
+                if (rs.getInt("VoluntarioID") == id){
                     resp = true;
                     break;
                 }
@@ -147,7 +147,7 @@ public class DVoluntario {
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("Id") == a.getId()){
+                if (rs.getInt("VoluntarioID") == a.getId()){
                     rs.updateString("Nombres", a.getNombres());
                     rs.updateString("Apellidos", a.getApellidos());
                     rs.updateString("Cedula", a.getCedula());
@@ -186,7 +186,7 @@ public class DVoluntario {
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if (rs.getInt("Id") == id){
+                if (rs.getInt("VoluntarioID") == id){
                     rs.deleteRow();
                     resp = true;
                     break;

@@ -53,7 +53,7 @@ GO
 
 CREATE TABLE [Actividades]
 (
-	[ActividadesID] nvarchar NOT NULL,
+	[ActividadesID] int NOT NULL IDENTITY (1,1),
 	[VoluntariadoID] int NOT NULL,
 	[Fecha] nvarchar(20) NULL,
 	[Hora] nvarchar(20) NULL,
@@ -64,7 +64,7 @@ GO
 
 CREATE TABLE [Persona]
 (
-	[PersonaID] int NOT NULL,
+	[PersonaID] int NOT NULL IDENTITY (1,1),
 	[Nombres] nvarchar(50) NULL,
 	[Apellidos] nvarchar(50) NULL,
 	[Cedula] nvarchar(20) NULL,
@@ -91,7 +91,7 @@ GO
 
 CREATE TABLE [Voluntario]
 (
-	[VoluntariadoID] int NOT NULL,
+	[VoluntariadoID] int NOT NULL IDENTITY (1,1),
 	[VoluntarioID] int NOT NULL IDENTITY (1, 1)
 )
 GO

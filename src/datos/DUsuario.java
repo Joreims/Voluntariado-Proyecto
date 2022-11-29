@@ -25,7 +25,7 @@ public class DUsuario {
     public void obtRegistros(){
         try{
             conn = Conexion.getConnection();
-            String tSQL = "Select * from Usario";
+            String tSQL = "Select * from Usuario";
             ps = conn.prepareStatement(tSQL, 
                     ResultSet.TYPE_SCROLL_SENSITIVE,
                    ResultSet.CONCUR_UPDATABLE,
