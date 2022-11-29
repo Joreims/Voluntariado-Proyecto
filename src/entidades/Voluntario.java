@@ -14,8 +14,8 @@ public class Voluntario extends Persona{
     public Voluntario() {
     }
     
-    public Voluntario(int id, String nombres, String apellidos, String cedula, String fechaNac, String celular, String email){
-        super(nombres, apellidos, cedula, fechaNac, celular, email);
+    public Voluntario(int id, String nombres, String apellidos, String cedula, String fechaNac,String email){
+        super(nombres, apellidos, cedula, fechaNac,email);
         this.id = id;
     }
    

@@ -16,191 +16,191 @@ import java.util.ArrayList;
  * @author manza
  */
 public class DActividades {
+
     //Atributos
     private Connection conn = null;
     private PreparedStatement ps = null;
     private ResultSet rs = null;
+
     //Metodos
-    public void obtRegistros(){
-        try{
+    public void obtRegistros() {
+        try {
             conn = Conexion.getConnection();
             String tSQL = "Select * from Actividades";
-            ps = conn.prepareStatement(tSQL, 
+            ps = conn.prepareStatement(tSQL,
                     ResultSet.TYPE_SCROLL_SENSITIVE,
-                   ResultSet.CONCUR_UPDATABLE,
-                   ResultSet.HOLD_CURSORS_OVER_COMMIT);
+                    ResultSet.CONCUR_UPDATABLE,
+                    ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("Error al obtener registros " + ex.getMessage());
         }
     }
-    public ArrayList<Actividades> listarActividades(){
+
+    public ArrayList<Actividades> listarActividades() {
         ArrayList<Actividades> lista = new ArrayList<>();
-        try{
+        try {
             this.obtRegistros();
-            while(rs.next()){
+            while (rs.next()) {
                 lista.add(new Actividades(
-                        rs.getInt("ActividadID"),
-                        rs.getString("Fecha"),
-                        rs.getString("Hora"),
-                        rs.getString("Descripcion")
+                        rs.getInt("actividadID"),
+                        rs.getString("fecha"),
+                        rs.getString("hora"),
+                        rs.getString("descripcion")
                 ));
             }
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("Error al listar actividad " + ex.getMessage());
-        }finally{
-            try{
-                if (rs !=null){
-                      rs.close();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
                 }
-                if (ps !=null){
-                      ps.close();
+                if (ps != null) {
+                    ps.close();
                 }
-                if (conn !=null){
-                      Conexion.closeConexion(conn);
+                if (conn != null) {
+                    Conexion.closeConexion(conn);
                 }
-             
-            }catch (SQLException ex){
-            System.out.println(ex.getMessage());
+
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
             }
         }
         return lista;
     }
-    
-    public boolean guardarActividades(Actividades a){
+
+    public boolean guardarActividades(Actividades a) {
         boolean guardado = false;
         this.obtRegistros();
-        try{
+        try {
             rs.moveToInsertRow();
-            rs.updateInt("ActividadID", a.getActividadID());
-            rs.updateString("Fecha", a.getFecha());
-            rs.updateString("Hora", a.getHora());
-            rs.updateString("Descripcion", a.getDescripcion());
+            rs.updateInt("actividadID", a.getActividadID());
+            rs.updateString("fecha", a.getFecha());
+            rs.updateString("hora", a.getHora());
+            rs.updateString("descripcion", a.getDescripcion());
             rs.insertRow();
             rs.moveToCurrentRow();
             guardado = true;
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("Error al guardar la actividad:" + ex.getMessage());
-        }finally{
-            try{
-                if (rs !=null){
-                      rs.close();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
                 }
-                if (ps !=null){
-                      ps.close();
+                if (ps != null) {
+                    ps.close();
                 }
-                if (conn !=null){
-                      Conexion.closeConexion(conn);
+                if (conn != null) {
+                    Conexion.closeConexion(conn);
                 }
-             
-            }catch (SQLException ex){
-            System.out.println(ex.getMessage());
+
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
             }
         }
         return guardado;
-}
-    public boolean existeActividades(int id){
+    }
+
+    public boolean existeActividades(int id) {
         boolean resp = false;
         this.obtRegistros();
-        try{
+        try {
             rs.beforeFirst();
-            while (rs.next()){
-                if (rs.getString("ActividadID").equals(id)){
+            while (rs.next()) {
+                if (rs.getString("actividadID").equals(id)) {
                     resp = true;
                     break;
                 }
             }
-        }catch(SQLException ex){
-            System.out.println("Error al buscar actividad"+ ex.getMessage());
-        }
-        finally{
-            try{
-                if (rs != null){
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar actividad" + ex.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
                     rs.close();
                 }
-                
-                if (ps != null){
+
+                if (ps != null) {
                     rs.close();
                 }
-                
-                if(conn != null) {
+
+                if (conn != null) {
                     Conexion.closeConexion(conn);
                 }
-            } catch(SQLException ex){
+            } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }
         }
         return resp;
     }
-    
-    public boolean editarActividades(Actividades a){
+
+    public boolean editarActividades(Actividades a) {
         boolean resp = false;
         this.obtRegistros();
-        try{
+        try {
             rs.beforeFirst();
-            while(rs.next()){
-                if(rs.getInt("ActividadID") == a.getActividadID()){
-                    rs.updateString("Fecha", a.getFecha());
-                    rs.updateString("Hora", a.getHora());
-                    rs.updateString("Descripcion", a.getDescripcion());
+            while (rs.next()) {
+                if (rs.getInt("actividadID") == a.getActividadID()) {
+                    rs.updateString("fecha", a.getFecha());
+                    rs.updateString("hora", a.getHora());
+                    rs.updateString("descripcion", a.getDescripcion());
                     rs.updateRow();
                     resp = true;
                     break;
                 }
             }
-        } catch(SQLException ex){
-            System.out.println("Error al editar actividad"+ ex.getMessage());
-        }
-        
-        finally{
+        } catch (SQLException ex) {
+            System.out.println("Error al editar actividad" + ex.getMessage());
+        } finally {
             try {
                 if (rs != null) {
                     rs.close();
                 }
-                
+
                 if (ps != null) {
                     rs.close();
                 }
-                
+
                 if (conn != null) {
                     Conexion.closeConexion(conn);
                 }
-            } catch (SQLException ex){
+            } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }
         }
         return resp;
     }
-    
-    public boolean eliminarActividades(int id){
+
+    public boolean eliminarActividades(int id) {
         boolean resp = false;
         this.obtRegistros();
-        try{
+        try {
             rs.beforeFirst();
-            while(rs.next()){
-                if(rs.getString("ActividadID").equals(id)){
+            while (rs.next()) {
+                if (rs.getString("actividadID").equals(id)) {
                     rs.deleteRow();
                     resp = true;
                     break;
                 }
             }
-        } catch (SQLException ex){
-            System.out.println("Error al eliminar actividad"+ ex.getMessage());
-        }
-        finally{
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar actividad" + ex.getMessage());
+        } finally {
             try {
                 if (rs != null) {
                     rs.close();
                 }
-                
+
                 if (ps != null) {
                     rs.close();
                 }
-                
+
                 if (conn != null) {
                     Conexion.closeConexion(conn);
                 }
-            } catch (SQLException ex){
+            } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }
         }

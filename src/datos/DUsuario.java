@@ -41,14 +41,13 @@ public class DUsuario {
             this.obtRegistros();
             while(rs.next()){
                 lista.add(new Usuario(
-                        rs.getInt("Id"),
-                        rs.getString("Password"),
-                        rs.getString("Nombres"),
-                        rs.getString("Apellidos"),
-                        rs.getString("Cedula"),
-                        rs.getString("FechaNac"),
-                        rs.getString("Celular"),
-                        rs.getString("Email")
+                        rs.getInt("id"),
+                        rs.getString("password"),
+                        rs.getString("nombres"),
+                        rs.getString("apellidos"),
+                        rs.getString("cedula"),
+                        rs.getString("fechaNac"),
+                        rs.getString("email")
                         
                 ));
             }
@@ -78,14 +77,13 @@ public class DUsuario {
         this.obtRegistros();
         try{
             rs.moveToInsertRow();
-            rs.updateInt("Id", a.getId());
-            rs.updateString("Password", a.getPassword());
-            rs.updateString("Nombres", a.getNombres());
-            rs.updateString("Apellidos", a.getApellidos());
-            rs.updateString("Cedula", a.getCedula());
-            rs.updateString("FechaNac", a.getFechaNac());
-            rs.updateString("Celular", a.getCelular());
-            rs.updateString("Email", a.getEmail());
+            rs.updateInt("id", a.getId());
+            rs.updateString("password", a.getPassword());
+            rs.updateString("nombres", a.getNombres());
+            rs.updateString("apellidos", a.getApellidos());
+            rs.updateString("cedula", a.getCedula());
+            rs.updateString("fechaNac", a.getFechaNac());
+            rs.updateString("email", a.getEmail());
             rs.insertRow();
             rs.moveToCurrentRow();
             guardado = true;
@@ -115,7 +113,7 @@ public class DUsuario {
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("Id") == id){
+                if (rs.getInt("id") == id){
                     resp = true;
                     break;
                 }
@@ -149,8 +147,8 @@ public class DUsuario {
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("Id") == a.getId()){
-                    rs.updateString("Password", a.getPassword());
+                if(rs.getInt("id") == a.getId()){
+                    rs.updateString("password", a.getPassword());
                     rs.updateRow();
                     resp = true;
                     break;
@@ -186,7 +184,7 @@ public class DUsuario {
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("Id") == id){
+                if(rs.getInt("id") == id){
                     rs.deleteRow();
                     resp = true;
                     break;

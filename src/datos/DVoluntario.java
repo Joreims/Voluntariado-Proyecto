@@ -42,13 +42,12 @@ public class DVoluntario {
             this.obtRegistros();
             while (rs.next()){
                 lista.add(new Voluntario(
-                        rs.getInt("VoluntarioID"),
-                        rs.getString("Nombres"),
-                        rs.getString("Apellidos"),
-                        rs.getString("Cedula"),
-                        rs.getString("FechaNac"),
-                        rs.getString("Celular"),
-                        rs.getString("Email")
+                        rs.getInt("id"),
+                        rs.getString("nombres"),
+                        rs.getString("apellidos"),
+                        rs.getString("cedula"),
+                        rs.getString("fechaNac"),
+                        rs.getString("email")
                 ));
             }
         } catch (SQLException ex){
@@ -79,12 +78,11 @@ public class DVoluntario {
         this.obtRegistros();
         try{
             rs.moveToInsertRow();
-            rs.updateString("Nombres", a.getNombres());
-            rs.updateString("Apellidos", a.getApellidos());
-            rs.updateString("Cedula", a.getCedula());
-            rs.updateString("FechaNac", a.getFechaNac());
-            rs.updateString("Celular", a.getCelular());
-            rs.updateString("Email", a.getEmail());
+            rs.updateString("nombres", a.getNombres());
+            rs.updateString("apellidos", a.getApellidos());
+            rs.updateString("cedula", a.getCedula());
+            rs.updateString("fechaNac", a.getFechaNac());
+            rs.updateString("email", a.getEmail());
             rs.insertRow();
             guardado = true;
         } catch (SQLException ex){
@@ -114,7 +112,7 @@ public class DVoluntario {
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("VoluntarioID") == id){
+                if (rs.getInt("id") == id){
                     resp = true;
                     break;
                 }
@@ -147,13 +145,12 @@ public class DVoluntario {
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("VoluntarioID") == a.getId()){
-                    rs.updateString("Nombres", a.getNombres());
-                    rs.updateString("Apellidos", a.getApellidos());
-                    rs.updateString("Cedula", a.getCedula());
-                    rs.updateString("FechaNac", a.getFechaNac());
-                    rs.updateString("Celular", a.getCelular());
-                    rs.updateString("Email", a.getEmail());
+                if (rs.getInt("id") == a.getId()){
+                    rs.updateString("nombres", a.getNombres());
+                    rs.updateString("apellidos", a.getApellidos());
+                    rs.updateString("cedula", a.getCedula());
+                    rs.updateString("fechaNac", a.getFechaNac());
+                    rs.updateString("email", a.getEmail());
                     rs.updateRow();
                     resp = true;
                     break;

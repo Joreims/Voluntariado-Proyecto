@@ -224,6 +224,7 @@ public class FrmLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Bienvenido al sistema de registros de voluntarios");
                 FrmUsuario Adm = new FrmUsuario();
                 Adm.setVisible(true);
+                dispose();
             }else {
                 JOptionPane.showMessageDialog(null, "Su usuario o contraseña son incorrectos");
             }
