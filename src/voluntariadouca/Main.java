@@ -4,7 +4,8 @@
  */
 package voluntariadouca;
 
-import presentacion.FrmVoluntariado;
+import presentacion.FrmInicioSesion;
+
 
 /**
  *
@@ -17,7 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        FrmVoluntariado frm = new FrmVoluntariado();
+        FrmInicioSesion frm = new FrmInicioSesion();
         frm.setVisible(true);
     }
     
