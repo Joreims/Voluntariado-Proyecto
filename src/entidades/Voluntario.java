@@ -4,30 +4,32 @@
  */
 package entidades;
 
+
 /**
  *
  * @author jegar
  */
 public class Voluntario extends Persona{
-    private int id;
+    private int VoluntarioID;
 
-    public Voluntario() {
+    public Voluntario(int VoluntarioID) {
+        this.VoluntarioID = VoluntarioID;
     }
-    
-    public Voluntario(int id, String nombres, String apellidos, String cedula, String fechaNac, String celular, String email){
-        super(nombres, apellidos, cedula, fechaNac, celular, email);
-        this.id = id;
+
+    public Voluntario(int VoluntarioID, String nombres, String apellidos, String cedula, String fechaNac, String email) {
+        super(nombres, apellidos, cedula, fechaNac, email);
+        this.VoluntarioID = VoluntarioID;
     }
-   
-    
+
+    public int getVoluntarioID() {
+        return VoluntarioID;
+    }
+
+    public void setVoluntarioID(int VoluntarioID) {
+        this.VoluntarioID = VoluntarioID;
+    }
+
     public int getId() {
-        return id;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    
-    
-    
 }

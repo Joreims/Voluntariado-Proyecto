@@ -40,11 +40,10 @@ public class DActividades {
             this.obtRegistros();
             while(rs.next()){
                 lista.add(new Actividades(
-                        rs.getString("ActividadID"),
                         rs.getString("Fecha"),
                         rs.getString("Hora"),
                         rs.getString("Descripcion")
-                ));
+                ) {});
             }
         }catch (SQLException ex){
             System.out.println("Error al listar actividad " + ex.getMessage());
@@ -72,7 +71,6 @@ public class DActividades {
         this.obtRegistros();
         try{
             rs.moveToInsertRow();
-            rs.updateString("ActividadID", a.getActividadID());
             rs.updateString("Fecha", a.getFecha());
             rs.updateString("Hora", a.getHora());
             rs.updateString("Descripcion", a.getDescripcion());
@@ -139,7 +137,7 @@ public class DActividades {
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getString("ActiviadadID").equals(a.getActividadID())){
+                if(rs.getString("ActividadID").equals(a.getActividadID())){
                     rs.updateString("Fecha", a.getFecha());
                     rs.updateString("Hora", a.getHora());
                     rs.updateString("Descripcion", a.getDescripcion());

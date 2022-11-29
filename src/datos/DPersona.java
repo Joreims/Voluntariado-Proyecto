@@ -40,9 +40,8 @@ public class DPersona {
                         rs.getString("Apellidos"),
                         rs.getString("Cedula"),
                         rs.getString("FechaNac"),
-                        rs.getString("Celular"),
                         rs.getString("Email")
-                ));
+                ) {});
             }
         }catch (SQLException ex){
             System.out.println("Error al listar persona " + ex.getMessage());
@@ -73,8 +72,7 @@ public class DPersona {
             rs.updateString("Nombres", a.getNombres());
             rs.updateString("Apellidos", a.getApellidos());
             rs.updateString("cedula", a.getCedula());
-            rs.updateString("FechaNac", a.getFechaNac());
-            rs.updateString("Celular", a.getCelular());
+            rs.updateString("FechaNac",  a.getFechaNac());
             rs.updateString("Email", a.getEmail());
             rs.insertRow();
             rs.moveToCurrentRow();
@@ -143,8 +141,7 @@ public class DPersona {
                     rs.updateString("Nombres", a.getNombres());
                     rs.updateString("Apellidos", a.getApellidos());
                     rs.updateString("cedula", a.getCedula());
-                    rs.updateString("FechaNac", a.getFechaNac());
-                    rs.updateString("Celular", a.getCelular());
+                    rs.updateString("FechaNac",  a.getFechaNac());
                     rs.updateString("Email", a.getEmail());
                     rs.updateRow();
                     resp = true;

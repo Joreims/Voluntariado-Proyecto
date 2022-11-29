@@ -47,7 +47,6 @@ public class DVoluntario {
                         rs.getString("Apellidos"),
                         rs.getString("Cedula"),
                         rs.getString("FechaNac"),
-                        rs.getString("Celular"),
                         rs.getString("Email")
                 ));
             }
@@ -74,7 +73,7 @@ public class DVoluntario {
         return lista;
     }
     
-    public boolean guardarVoluntario(Persona a){
+    public boolean guardarVoluntario(Voluntario a){
         boolean guardado = false;
         this.obtRegistros();
         try{
@@ -83,7 +82,6 @@ public class DVoluntario {
             rs.updateString("Apellidos", a.getApellidos());
             rs.updateString("Cedula", a.getCedula());
             rs.updateString("FechaNac", a.getFechaNac());
-            rs.updateString("Celular", a.getCelular());
             rs.updateString("Email", a.getEmail());
             rs.insertRow();
             guardado = true;
@@ -152,7 +150,6 @@ public class DVoluntario {
                     rs.updateString("Apellidos", a.getApellidos());
                     rs.updateString("Cedula", a.getCedula());
                     rs.updateString("FechaNac", a.getFechaNac());
-                    rs.updateString("Celular", a.getCelular());
                     rs.updateString("Email", a.getEmail());
                     rs.updateRow();
                     resp = true;
