@@ -74,7 +74,6 @@ public class DActividades {
         this.obtRegistros();
         try {
             rs.moveToInsertRow();
-            rs.updateInt("actividadID", a.getActividadID());
             rs.updateString("fecha", a.getFecha());
             rs.updateString("hora", a.getHora());
             rs.updateString("descripcion", a.getDescripcion());
