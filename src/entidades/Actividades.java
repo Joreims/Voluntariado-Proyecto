@@ -9,28 +9,30 @@ package entidades;
  * @author manza
  */
 public class Actividades {
-    private int actividadID;
+    private String actividadID;
     private String fecha;
-    private float hora;
+    private String hora;
     private String descripcion;
-    private boolean estado;
 
     public Actividades() {
     }
 
-    public Actividades(int actividadID, String fecha, float hora, String descripcion, boolean estado) {
+    public Actividades(String actividadID, String fecha, String hora, String descripcion) {
         this.actividadID = actividadID;
         this.fecha = fecha;
         this.hora = hora;
         this.descripcion = descripcion;
-        this.estado = estado;
     }
 
-    public int getActividadID() {
+    public Actividades(int i, String text, String text0, String text1, String text2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getActividadID() {
         return actividadID;
     }
 
-    public void setActividadID(int actividadID) {
+    public void setActividadID(String actividadID) {
         this.actividadID = actividadID;
     }
 
@@ -42,11 +44,11 @@ public class Actividades {
         this.fecha = fecha;
     }
 
-    public float getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(float hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -56,14 +58,6 @@ public class Actividades {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
     }
     
 }

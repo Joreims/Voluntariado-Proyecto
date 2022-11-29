@@ -39,11 +39,10 @@ public class DActividades {
             this.obtRegistros();
             while(rs.next()){
                 lista.add(new Actividades(
-                        rs.getInt("ActividadID"),
+                        rs.getString("ActividadID"),
                         rs.getString("Fecha"),
-                        rs.getFloat("Hora"),
-                        rs.getString("Descripcion"),
-                        rs.getBoolean("Estado")
+                        rs.getString("Hora"),
+                        rs.getString("Descripcion")
                 ));
             }
         }catch (SQLException ex){
@@ -67,16 +66,15 @@ public class DActividades {
         return lista;
     }
     
-    public boolean guardarActividad(Actividades a){
+    public boolean guardarActividades(Actividades a){
         boolean guardado = false;
         this.obtRegistros();
         try{
             rs.moveToInsertRow();
-            rs.updateInt("ActividadID", a.getActividadID());
+            rs.updateString("ActividadID", a.getActividadID());
             rs.updateString("Fecha", a.getFecha());
-            rs.updateFloat("Hora", a.getHora());
+            rs.updateString("Hora", a.getHora());
             rs.updateString("Descripcion", a.getDescripcion());
-            rs.updateBoolean("Estado", a.isEstado());
             rs.insertRow();
             rs.moveToCurrentRow();
             guardado = true;
@@ -100,13 +98,13 @@ public class DActividades {
         }
         return guardado;
 }
-    public boolean existeActividad(int id){
+    public boolean existeActividades(String id){
         boolean resp = false;
         this.obtRegistros();
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("ActividadID") == id){
+                if (rs.getString("ActividadID").equals(id)){
                     resp = true;
                     break;
                 }
@@ -134,17 +132,16 @@ public class DActividades {
         return resp;
     }
     
-    public boolean editarActividad(Actividades a){
+    public boolean editarActividades(Actividades a){
         boolean resp = false;
         this.obtRegistros();
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("ActiviadadID") == a.getActividadID()){
+                if(rs.getString("ActiviadadID").equals(a.getActividadID())){
                     rs.updateString("Fecha", a.getFecha());
-                    rs.updateFloat("Hora", a.getHora());
+                    rs.updateString("Hora", a.getHora());
                     rs.updateString("Descripcion", a.getDescripcion());
-                    rs.updateBoolean("Estado", a.isEstado());
                     rs.updateRow();
                     resp = true;
                     break;
@@ -174,13 +171,13 @@ public class DActividades {
         return resp;
     }
     
-    public boolean eliminarActividad(int id){
+    public boolean eliminarActividades(String id){
         boolean resp = false;
         this.obtRegistros();
         try{
             rs.beforeFirst();
             while(rs.next()){
-                if(rs.getInt("ActividadID") == id){
+                if(rs.getString("ActividadID").equals(id)){
                     rs.deleteRow();
                     resp = true;
                     break;
