@@ -64,7 +64,7 @@ public class Conexion {
         try {
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
            con= DriverManager.getConnection(URL, USER, PASSWORD);
-           System.out.println("Se conectó a la BD hr");
+           System.out.println("Se conectó a la BD");
         } 
         catch (ClassNotFoundException e) {
            con=null;

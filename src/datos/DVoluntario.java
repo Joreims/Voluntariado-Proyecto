@@ -4,7 +4,6 @@
  */
 package datos;
 
-import entidades.Persona;
 import entidades.Voluntario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,6 +29,7 @@ public class DVoluntario {
                     ResultSet.TYPE_SCROLL_SENSITIVE,
                    ResultSet.CONCUR_UPDATABLE,
                    ResultSet.HOLD_CURSORS_OVER_COMMIT);
+            rs = ps.executeQuery();
         }catch (SQLException ex){
             System.out.println("Error al obtener registros " + ex.getMessage());
         }
