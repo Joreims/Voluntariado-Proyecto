@@ -41,7 +41,7 @@ public class DVoluntario {
             this.obtRegistros();
             while (rs.next()){
                 lista.add(new Voluntario(
-                        rs.getInt("id"),
+                        rs.getInt("VoluntarioID"),
                         rs.getString("voluntariado"),
                         rs.getString("nombres"),
                         rs.getString("apellidos"),
@@ -113,7 +113,7 @@ public class DVoluntario {
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("id") == id){
+                if (rs.getInt("VoluntarioID") == id){
                     resp = true;
                     break;
                 }
@@ -146,7 +146,7 @@ public class DVoluntario {
         try{
             rs.beforeFirst();
             while (rs.next()){
-                if (rs.getInt("id") == a.getId()){
+                if (rs.getInt("VoluntarioID") == a.getId()){
                     rs.updateString("voluntariado", a.getVoluntariado());
                     rs.updateString("nombres", a.getNombres());
                     rs.updateString("apellidos", a.getApellidos());
