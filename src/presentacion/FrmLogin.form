@@ -256,6 +256,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="jPasswordField1"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TfPasswordMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

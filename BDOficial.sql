@@ -1,4 +1,6 @@
-USE BDFinal11
+Create database BDFinalVol
+Go
+USE BDFinalVol
 GO
 /****** Object:  Table [dbo].[Actividades]    Script Date: 29/11/2022 17:11:31 ******/
 SET ANSI_NULLS ON
