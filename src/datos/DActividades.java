@@ -29,8 +29,8 @@ public class DActividades {
             String tSQL = "Select * from Actividades";
             ps = conn.prepareStatement(tSQL,
                     ResultSet.TYPE_SCROLL_SENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE,
-                    ResultSet.HOLD_CURSORS_OVER_COMMIT);
+                   ResultSet.CONCUR_UPDATABLE,
+                   ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener registros " + ex.getMessage());
@@ -171,13 +171,13 @@ public class DActividades {
         return resp;
     }
 
-    public boolean eliminarActividades(int id) {
+    public boolean eliminarActividades(int actividadID) {
         boolean resp = false;
         this.obtRegistros();
         try {
             rs.beforeFirst();
             while (rs.next()) {
-                if (rs.getString("actividadID").equals(id)) {
+                if (rs.getInt("actividadID") == actividadID) {
                     rs.deleteRow();
                     resp = true;
                     break;

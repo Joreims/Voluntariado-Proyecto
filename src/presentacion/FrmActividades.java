@@ -165,8 +165,7 @@ public class FrmActividades extends javax.swing.JFrame {
         TbComandos.add(BtnGuardar);
 
         BtnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/iconos/Editar.png"))); // NOI18N
-        BtnEditar.setText("Editar");
-        BtnEditar.setEnabled(false);
+        BtnEditar.setFocusable(false);
         BtnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         BtnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,8 +176,7 @@ public class FrmActividades extends javax.swing.JFrame {
         TbComandos.add(BtnEditar);
 
         BtnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/iconos/eliminar.png"))); // NOI18N
-        BtnEliminar.setText("Eliminar");
-        BtnEliminar.setEnabled(false);
+        BtnEliminar.setFocusable(false);
         BtnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -391,26 +389,6 @@ public class FrmActividades extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
 
-    private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
-        // TODO add your handling code here:
-        this.verificarDatosVacios();
-        Actividades a = new Actividades(
-                actividadID,
-                TfFecha.getText(),
-                TfHora.getText(),
-                TaDesc.getText()
-        );
-        if (dActividades.editarActividades(a)){
-                JOptionPane.showMessageDialog(this, "Resgistro Editado.",
-                        "Actividades", JOptionPane.INFORMATION_MESSAGE);
-                llenarTabla();
-                TbPanel.setSelectedIndex(1);
-            } else{
-                JOptionPane.showMessageDialog(this, "Error al editar",
-                        "Actividades", JOptionPane.WARNING_MESSAGE);
-            }
-    }//GEN-LAST:event_BtnEditarActionPerformed
-
     private void TfDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfDatoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TfDatoActionPerformed
@@ -440,23 +418,6 @@ public class FrmActividades extends javax.swing.JFrame {
         TblRegistros.setRowSorter(trsFiltro);
     }//GEN-LAST:event_TfDatoKeyTyped
 
-    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
-        // TODO add your handling code here:
-        this.verificarDatosVacios();
-        int resp = JOptionPane.showConfirmDialog(this, "¿Desea eliminar este registro?",
-                "Voluntariado", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (resp == 0) {
-            if (dActividades.eliminarActividades(actividadID)) {
-                JOptionPane.showMessageDialog(this, "Registro eliminado satisfactoriamente",
-                        "Voluntariado", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Error al eliminar",
-                        "Voluntario", JOptionPane.WARNING_MESSAGE);
-            }
-        }
-        llenarTabla();
-    }//GEN-LAST:event_BtnEliminarActionPerformed
-
     private void TfFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfFechaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TfFechaActionPerformed
@@ -466,6 +427,43 @@ public class FrmActividades extends javax.swing.JFrame {
         regresar.setVisible(true);
         dispose();
     }//GEN-LAST:event_BtnRegresarActionPerformed
+
+    private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
+        // TODO add your handling code here:
+        this.verificarDatosVacios();
+            Actividades a = new Actividades(
+                    actividadID,
+                    TfFecha.getText(),
+                    TfHora.getText(),
+                    TaDesc.getText()
+            );
+            if (dActividades.editarActividades(a)){
+                JOptionPane.showMessageDialog(this, "Resgistro Editado.",
+                        "Actividades", JOptionPane.INFORMATION_MESSAGE);
+                llenarTabla();
+                TbPanel.setSelectedIndex(1);
+            } else{
+                JOptionPane.showMessageDialog(this, "Error al editar",
+                        "Actividades", JOptionPane.WARNING_MESSAGE);
+            }
+    }//GEN-LAST:event_BtnEditarActionPerformed
+
+    private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
+        // TODO add your handling code here:
+        this.verificarDatosVacios();
+        int resp;
+        resp = JOptionPane.showConfirmDialog(this, "¿Desea eliminar este registro?",
+                "Actividades", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == 0){
+            if (dActividades.eliminarActividades(actividadID)){
+                JOptionPane.showMessageDialog(this, "Registro eliminado satisfactoriamente",
+                        "Actividades", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar",
+                        "Actividades", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_BtnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
