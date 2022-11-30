@@ -42,7 +42,8 @@ public class DActividades {
         try {
             this.obtRegistros();
             while (rs.next()) {
-                lista.add(new Actividades(0,
+                lista.add(new Actividades(
+                        rs.getInt("id"),
                         rs.getString("fecha"),
                         rs.getString("hora"),
                         rs.getString("descripcion")
@@ -107,7 +108,7 @@ public class DActividades {
         try {
             rs.beforeFirst();
             while (rs.next()) {
-                if (rs.getString("actividadID").equals(id)) {
+                if (rs.getString("id").equals(id)) {
                     resp = true;
                     break;
                 }
@@ -140,7 +141,7 @@ public class DActividades {
         try {
             rs.beforeFirst();
             while (rs.next()) {
-                if (rs.getInt("actividadID") == a.getActividadID()) {
+                if (rs.getInt("id") == a.getActividadID()) {
                     rs.updateString("fecha", a.getFecha());
                     rs.updateString("hora", a.getHora());
                     rs.updateString("descripcion", a.getDescripcion());
@@ -177,7 +178,7 @@ public class DActividades {
         try {
             rs.beforeFirst();
             while (rs.next()) {
-                if (rs.getInt("actividadID") == actividadID) {
+                if (rs.getInt("id") == actividadID) {
                     rs.deleteRow();
                     resp = true;
                     break;
