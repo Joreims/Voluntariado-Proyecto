@@ -38,6 +38,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
         TfCedula.setText("");
         TfFechaNac.setText("");
         TfEmail.setText("");
+        TfVoluntariado.setText("");
         BtnGuardar.setEnabled(true);
         BtnEditar.setEnabled(false);
         BtnEliminar.setEnabled(false);
@@ -58,10 +59,11 @@ public class FrmVoluntario extends javax.swing.JFrame {
                 return false;
             }
         };
-        String titulos[] = {"Nombres", "Apellidos", "Cédula", "FechaNac", "Email"};
+        String titulos[] = {"Voluntariado", "Nombres", "Apellidos", "Cédula", "FechaNac", "Email"};
         dtm.setColumnIdentifiers(titulos);
         for (Voluntario a : lista){
             Object[] fila = new Object[]{
+                a.getVoluntariado(),
                 a.getNombres(),
                 a.getApellidos(),
                 a.getCedula(),
@@ -80,6 +82,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
     private void ubicarDatos(){
         int fila = TblRegistro.getSelectedRow();
         id = lista.get(fila).getId();
+        TfVoluntariado.setText(lista.get(fila).getVoluntariado());
         TfNombres.setText(lista.get(fila).getNombres());
         TfApellidos.setText(lista.get(fila).getApellidos());
         TfCedula.setText(lista.get(fila).getCedula());
@@ -112,6 +115,11 @@ public class FrmVoluntario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Por favor verifique que el email"
                     + " no esté vacío.", "Voluntario", JOptionPane.WARNING_MESSAGE);
             TfEmail.requestFocus();
+        }
+        if (TfVoluntariado.getText().equals("") || TfVoluntariado.getText().length() == 0){
+            JOptionPane.showMessageDialog(this, "Por favor verifique que el voluntariado"
+                    + " no esté vacío.", "Voluntario", JOptionPane.WARNING_MESSAGE);
+            TfVoluntariado.requestFocus();
         }
     }
     
@@ -147,6 +155,8 @@ public class FrmVoluntario extends javax.swing.JFrame {
         TfCedula = new javax.swing.JTextField();
         TfFechaNac = new javax.swing.JTextField();
         TfEmail = new javax.swing.JTextField();
+        Volun = new javax.swing.JLabel();
+        TfVoluntariado = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         TfDato = new javax.swing.JTextField();
@@ -244,10 +254,16 @@ public class FrmVoluntario extends javax.swing.JFrame {
 
         TfEmail.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        Volun.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Volun.setText("Voluntariado:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(TbComandos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,18 +274,17 @@ public class FrmVoluntario extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Volun))
                         .addGap(82, 82, 82)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TfNombres)
                             .addComponent(TfApellidos)
                             .addComponent(TfCedula)
                             .addComponent(TfFechaNac)
-                            .addComponent(TfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))))
-                .addContainerGap(65, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(TbComandos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(TfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                            .addComponent(TfVoluntariado))))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +312,11 @@ public class FrmVoluntario extends javax.swing.JFrame {
                         .addComponent(TfFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(TfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Volun)
+                    .addComponent(TfVoluntariado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         TbPanel.addTab("Datos", jPanel2);
@@ -342,7 +361,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(TfDato, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -373,14 +392,14 @@ public class FrmVoluntario extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(TbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnRegresar)
                 .addGap(183, 183, 183))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(TbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,23 +417,19 @@ public class FrmVoluntario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(67, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TfCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TfCedulaActionPerformed
 
     private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
         // TODO add your handling code here:
@@ -427,6 +442,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
         this.verificarDatosVacios();
         try{
             Voluntario a = new Voluntario(0,
+                    TfVoluntariado.getText(),
                     TfNombres.getText(),
                     TfApellidos.getText(),
                     TfCedula.getText(),
@@ -492,6 +508,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
         this.verificarDatosVacios();
             Voluntario a = new Voluntario(
                     id,
+                    TfVoluntariado.getText(),
                     TfNombres.getText(),
                     TfApellidos.getText(),
                     TfCedula.getText(),
@@ -519,6 +536,10 @@ public class FrmVoluntario extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_TblRegistroMouseClicked
+
+    private void TfCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TfCedulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -577,6 +598,8 @@ public class FrmVoluntario extends javax.swing.JFrame {
     private javax.swing.JTextField TfEmail;
     private javax.swing.JTextField TfFechaNac;
     private javax.swing.JTextField TfNombres;
+    private javax.swing.JTextField TfVoluntariado;
+    private javax.swing.JLabel Volun;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

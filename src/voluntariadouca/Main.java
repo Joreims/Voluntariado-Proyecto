@@ -9,7 +9,7 @@ import presentacion.FrmLogin;
 
 /**
  *
- * @author abiga
+ * @author Manza
  */
 public class Main {
 

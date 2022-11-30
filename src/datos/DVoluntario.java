@@ -4,7 +4,6 @@
  */
 package datos;
 
-import entidades.Persona;
 import entidades.Voluntario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -43,6 +42,7 @@ public class DVoluntario {
             while (rs.next()){
                 lista.add(new Voluntario(
                         rs.getInt("id"),
+                        rs.getString("voluntariado"),
                         rs.getString("nombres"),
                         rs.getString("apellidos"),
                         rs.getString("cedula"),
@@ -73,11 +73,12 @@ public class DVoluntario {
         return lista;
     }
     
-    public boolean guardarVoluntario(Persona a){
+    public boolean guardarVoluntario(Voluntario a){
         boolean guardado = false;
         this.obtRegistros();
         try{
             rs.moveToInsertRow();
+            rs.updateString("voluntariado", a.getVoluntariado());
             rs.updateString("nombres", a.getNombres());
             rs.updateString("apellidos", a.getApellidos());
             rs.updateString("cedula", a.getCedula());
@@ -146,6 +147,7 @@ public class DVoluntario {
             rs.beforeFirst();
             while (rs.next()){
                 if (rs.getInt("id") == a.getId()){
+                    rs.updateString("voluntariado", a.getVoluntariado());
                     rs.updateString("nombres", a.getNombres());
                     rs.updateString("apellidos", a.getApellidos());
                     rs.updateString("cedula", a.getCedula());
