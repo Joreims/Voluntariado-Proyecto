@@ -29,8 +29,8 @@ public class DActividades {
             String tSQL = "Select * from Actividades";
             ps = conn.prepareStatement(tSQL,
                     ResultSet.TYPE_SCROLL_SENSITIVE,
-                   ResultSet.CONCUR_UPDATABLE,
-                   ResultSet.HOLD_CURSORS_OVER_COMMIT);
+                    ResultSet.CONCUR_UPDATABLE,
+                    ResultSet.HOLD_CURSORS_OVER_COMMIT);
             rs = ps.executeQuery();
         } catch (SQLException ex) {
             System.out.println("Error al obtener registros " + ex.getMessage());
@@ -43,7 +43,7 @@ public class DActividades {
             this.obtRegistros();
             while (rs.next()) {
                 lista.add(new Actividades(
-                        rs.getInt("id"),
+                        rs.getInt("actividadID"),
                         rs.getString("fecha"),
                         rs.getString("hora"),
                         rs.getString("descripcion")
@@ -141,7 +141,7 @@ public class DActividades {
         try {
             rs.beforeFirst();
             while (rs.next()) {
-                if (rs.getInt("id") == a.getActividadID()) {
+                if (rs.getInt("actividadID") == a.getActividadID()) {
                     rs.updateString("fecha", a.getFecha());
                     rs.updateString("hora", a.getHora());
                     rs.updateString("descripcion", a.getDescripcion());
@@ -178,7 +178,7 @@ public class DActividades {
         try {
             rs.beforeFirst();
             while (rs.next()) {
-                if (rs.getInt("id") == actividadID) {
+                if (rs.getInt("actividadID") == actividadID) {
                     rs.deleteRow();
                     resp = true;
                     break;

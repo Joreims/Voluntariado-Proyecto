@@ -372,6 +372,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="TfVoluntariado">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TfVoluntariadoActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

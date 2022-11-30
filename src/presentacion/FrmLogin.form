@@ -253,11 +253,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="TfPassword">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TfPasswordMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TfPasswordActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

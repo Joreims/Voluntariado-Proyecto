@@ -431,21 +431,21 @@ public class FrmActividades extends javax.swing.JFrame {
     private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
         // TODO add your handling code here:
         this.verificarDatosVacios();
-            Actividades a = new Actividades(
-                    actividadID,
-                    TfFecha.getText(),
-                    TfHora.getText(),
-                    TaDesc.getText()
-            );
-            if (dActividades.editarActividades(a)){
-                JOptionPane.showMessageDialog(this, "Resgistro Editado.",
-                        "Actividades", JOptionPane.INFORMATION_MESSAGE);
-                llenarTabla();
-                TbPanel.setSelectedIndex(1);
-            } else{
-                JOptionPane.showMessageDialog(this, "Error al editar",
-                        "Actividades", JOptionPane.WARNING_MESSAGE);
-            }
+        Actividades a = new Actividades(
+                actividadID,
+                TfFecha.getText(),
+                TfHora.getText(),
+                TaDesc.getText()
+        );
+        if (dActividades.editarActividades(a)) {
+            JOptionPane.showMessageDialog(this, "Resgistro Editado.",
+                    "Actividades", JOptionPane.INFORMATION_MESSAGE);
+            llenarTabla();
+            TbPanel.setSelectedIndex(1);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al editar",
+                    "Actividades", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_BtnEditarActionPerformed
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
@@ -454,11 +454,11 @@ public class FrmActividades extends javax.swing.JFrame {
         int resp;
         resp = JOptionPane.showConfirmDialog(this, "¿Desea eliminar este registro?",
                 "Actividades", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (resp == 0){
-            if (dActividades.eliminarActividades(actividadID)){
+        if (resp == 0) {
+            if (dActividades.eliminarActividades(actividadID)) {
                 JOptionPane.showMessageDialog(this, "Registro eliminado satisfactoriamente",
                         "Actividades", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+            } else {
                 JOptionPane.showMessageDialog(this, "Error al eliminar",
                         "Actividades", JOptionPane.WARNING_MESSAGE);
             }

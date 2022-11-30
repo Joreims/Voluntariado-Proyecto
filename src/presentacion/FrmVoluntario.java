@@ -59,7 +59,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
                 return false;
             }
         };
-        String titulos[] = {"Voluntariado", "Nombres", "Apellidos", "Cédula", "FechaNac", "Email"};
+        String titulos[] = {"Nombres", "Apellidos", "Cédula", "FechaNac", "Email","Voluntariado"};
         dtm.setColumnIdentifiers(titulos);
         for (Voluntario a : lista){
             Object[] fila = new Object[]{
@@ -256,6 +256,12 @@ public class FrmVoluntario extends javax.swing.JFrame {
 
         Volun.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Volun.setText("Voluntariado:");
+
+        TfVoluntariado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TfVoluntariadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -529,6 +535,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
     private void TblRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblRegistroMouseClicked
         // TODO add your handling code here:
         TblRegistro.addMouseListener(new java.awt.event.MouseAdapter(){
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent e){
                 if (e.getClickCount() == 2){
                     ubicarDatos();
@@ -540,6 +547,10 @@ public class FrmVoluntario extends javax.swing.JFrame {
     private void TfCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfCedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TfCedulaActionPerformed
+
+    private void TfVoluntariadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfVoluntariadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TfVoluntariadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -566,6 +577,22 @@ public class FrmVoluntario extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmVoluntario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

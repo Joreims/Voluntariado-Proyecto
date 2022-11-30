@@ -1,8 +1,19 @@
-Create database BDFinalVol
+/*    ==Scripting Parameters==
+
+    Source Server Version : SQL Server 2019 (15.0.2000)
+    Source Database Engine Edition : Microsoft SQL Server Enterprise Edition
+    Source Database Engine Type : Standalone SQL Server
+
+    Target Server Version : SQL Server 2019
+    Target Database Engine Edition : Microsoft SQL Server Enterprise Edition
+    Target Database Engine Type : Standalone SQL Server
+*/
+Create database BDFinalVol 
 Go
-USE BDFinalVol
+
+USE [BDFinalVol]
 GO
-/****** Object:  Table [dbo].[Actividades]    Script Date: 29/11/2022 17:11:31 ******/
+/****** Object:  Table [dbo].[Actividades]    Script Date: 30/11/2022 0:25:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -18,7 +29,7 @@ CREATE TABLE [dbo].[Actividades](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Persona]    Script Date: 29/11/2022 17:11:31 ******/
+/****** Object:  Table [dbo].[Persona]    Script Date: 30/11/2022 0:25:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -28,11 +39,10 @@ CREATE TABLE [dbo].[Persona](
 	[apellidos] [nvarchar](50) NULL,
 	[cedula] [nvarchar](50) NULL,
 	[fechaNac] [nvarchar](50) NULL,
-	[celular] [nvarchar](50) NULL,
 	[email] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 29/11/2022 17:11:31 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 30/11/2022 0:25:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -52,7 +62,7 @@ CREATE TABLE [dbo].[Usuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Voluntario]    Script Date: 29/11/2022 17:11:31 ******/
+/****** Object:  Table [dbo].[Voluntario]    Script Date: 30/11/2022 0:25:53 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -64,6 +74,7 @@ CREATE TABLE [dbo].[Voluntario](
 	[cedula] [nvarchar](50) NULL,
 	[fechaNac] [nvarchar](50) NULL,
 	[email] [nvarchar](50) NULL,
+	[voluntariado] [nvarchar](50) NULL,
  CONSTRAINT [PK_Voluntario] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -75,8 +86,4 @@ GO
 INSERT [dbo].[Actividades] ([actividadID], [fecha], [hora], [descripcion]) VALUES (1, N'20-12-2022', N'12 P.M', N'Voluntariado UCA')
 GO
 SET IDENTITY_INSERT [dbo].[Actividades] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Voluntario] ON 
-GO
-SET IDENTITY_INSERT [dbo].[Voluntario] OFF
 GO

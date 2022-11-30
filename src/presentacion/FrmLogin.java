@@ -92,10 +92,14 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("CONTRASEÑA:");
 
-        TfPassword.setText("jPasswordField1");
         TfPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TfPasswordMouseClicked(evt);
+            }
+        });
+        TfPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TfPasswordActionPerformed(evt);
             }
         });
 
@@ -243,6 +247,10 @@ public class FrmLogin extends javax.swing.JFrame {
           TfPassword.setText("");
     }//GEN-LAST:event_TfPasswordMouseClicked
 
+    private void TfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TfPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TfPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,6 +276,10 @@ public class FrmLogin extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
