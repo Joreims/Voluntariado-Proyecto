@@ -37,7 +37,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         TfUser = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        TfPassword = new javax.swing.JTextField();
+        TfPassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         BtnIngresar = new javax.swing.JToggleButton();
@@ -91,6 +91,8 @@ public class FrmLogin extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("CONTRASEÑA:");
+
+        TfPassword.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -271,7 +273,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BtnIngresar;
-    private javax.swing.JTextField TfPassword;
+    private javax.swing.JPasswordField TfPassword;
     private javax.swing.JTextField TfUser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

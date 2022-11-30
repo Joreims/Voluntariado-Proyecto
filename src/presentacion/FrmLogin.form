@@ -252,7 +252,10 @@
                 <Property name="text" type="java.lang.String" value="CONTRASE&#xd1;A:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="TfPassword">
+            <Component class="javax.swing.JPasswordField" name="TfPassword">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
