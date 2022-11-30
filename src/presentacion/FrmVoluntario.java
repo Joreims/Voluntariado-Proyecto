@@ -469,7 +469,7 @@ public class FrmVoluntario extends javax.swing.JFrame {
         this.verificarDatosVacios();
         int resp;
         resp = JOptionPane.showConfirmDialog(this, "¿Desea eliminar este registro?",
-                "Voluntario", JOptionPane.QUESTION_MESSAGE);
+                "Voluntario", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (resp == 0){
             if (dVoluntario.eliminarVoluntario(id)){
                 JOptionPane.showMessageDialog(this, "Registro eliminado satisfactoriamente",
@@ -490,7 +490,6 @@ public class FrmVoluntario extends javax.swing.JFrame {
     private void BtnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarActionPerformed
         // TODO add your handling code here:
         this.verificarDatosVacios();
-        try{
             Voluntario a = new Voluntario(
                     id,
                     TfNombres.getText(),
@@ -501,17 +500,13 @@ public class FrmVoluntario extends javax.swing.JFrame {
             );
             if (dVoluntario.editarVoluntario(a)){
                 JOptionPane.showMessageDialog(this, "Resgistro Editado.",
-                        "Voluntario", JOptionPane.WARNING_MESSAGE);
+                        "Voluntario", JOptionPane.INFORMATION_MESSAGE);
                 llenarTabla();
                 TbPanel.setSelectedIndex(1);
             } else{
                 JOptionPane.showMessageDialog(this, "Error al editar",
                         "Voluntario", JOptionPane.WARNING_MESSAGE);
             }
-        } catch (HeadlessException ex){
-            System.out.println("Error al intentar editar: " + ex.getMessage()
-            );
-        }
     }//GEN-LAST:event_BtnEditarActionPerformed
 
     private void TblRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblRegistroMouseClicked
@@ -550,6 +545,10 @@ public class FrmVoluntario extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmVoluntario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

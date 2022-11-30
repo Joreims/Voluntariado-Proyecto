@@ -31,7 +31,6 @@ public class FrmActividades extends javax.swing.JFrame {
     TableRowSorter trsFiltro;
 
     private void limpiar() {
-        TfId.setText("");
         TfFecha.setText("");
         TfHora.setText("");
         TaDesc.setText("");
@@ -59,7 +58,6 @@ public class FrmActividades extends javax.swing.JFrame {
         dtm.setColumnIdentifiers(titulos);
         for (Actividades a : lista) {
             Object[] fila = new Object[]{
-                a.getActividadID(),
                 a.getFecha(),
                 a.getHora(),
                 a.getDescripcion()
@@ -132,8 +130,6 @@ public class FrmActividades extends javax.swing.JFrame {
         TfFecha = new javax.swing.JTextField();
         TfHora = new javax.swing.JTextField();
         TaDesc = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        TfId = new javax.swing.JTextField();
         Registros = new javax.swing.JPanel();
         Buscar = new javax.swing.JLabel();
         TfDato = new javax.swing.JTextField();
@@ -214,8 +210,6 @@ public class FrmActividades extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("ID");
-
         javax.swing.GroupLayout DatosLayout = new javax.swing.GroupLayout(Datos);
         Datos.setLayout(DatosLayout);
         DatosLayout.setHorizontalGroup(
@@ -231,16 +225,13 @@ public class FrmActividades extends javax.swing.JFrame {
                         .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(DatosLayout.createSequentialGroup()
-                                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel3))
+                                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TfFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-                                    .addComponent(TfHora, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-                                    .addComponent(TfId)))))
+                                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TfHora, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(TbComandos, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(DatosLayout.createSequentialGroup()
                         .addGap(176, 176, 176)
@@ -251,11 +242,7 @@ public class FrmActividades extends javax.swing.JFrame {
             DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DatosLayout.createSequentialGroup()
                 .addComponent(TbComandos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(41, 41, 41)
                 .addGroup(DatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Tipo)
                     .addComponent(TfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -269,7 +256,7 @@ public class FrmActividades extends javax.swing.JFrame {
                 .addComponent(TaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnRegresar)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         TbPanel.addTab("Datos", Datos);
@@ -505,11 +492,9 @@ public class FrmActividades extends javax.swing.JFrame {
     private javax.swing.JTextField TfDato;
     private javax.swing.JTextField TfFecha;
     private javax.swing.JTextField TfHora;
-    private javax.swing.JTextField TfId;
     private javax.swing.JLabel Tipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
