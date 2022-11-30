@@ -402,7 +402,7 @@ public class FrmActividades extends javax.swing.JFrame {
         );
         if (dActividades.editarActividades(a)){
                 JOptionPane.showMessageDialog(this, "Resgistro Editado.",
-                        "Actividades", JOptionPane.WARNING_MESSAGE);
+                        "Actividades", JOptionPane.INFORMATION_MESSAGE);
                 llenarTabla();
                 TbPanel.setSelectedIndex(1);
             } else{
@@ -449,6 +449,9 @@ public class FrmActividades extends javax.swing.JFrame {
             if (dActividades.eliminarActividades(actividadID)) {
                 JOptionPane.showMessageDialog(this, "Registro eliminado satisfactoriamente",
                         "Voluntariado", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar",
+                        "Voluntario", JOptionPane.WARNING_MESSAGE);
             }
         }
         llenarTabla();
